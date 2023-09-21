@@ -1,0 +1,7 @@
+{
+  "name": "DiscoverMeet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

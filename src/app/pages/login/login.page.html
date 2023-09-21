@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="app-bar">
+    <ion-title>Discover meet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-img class="icon"
+      src="../../../assets/logo/icon.png"
+      alt="Discover meet icon"
+    ></ion-img>
+  <div class="body">
+      <form [formGroup]="formEdit">
+        <div>
+          <mat-form-field appearance="fill" class="field">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" name="email" required>
+            <mat-error *ngIf="formEdit.get('email')?.hasError('required')">
+              Debe proporcionar un email valido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill" class="field">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" name="password" required>
+            <mat-error *ngIf="formEdit.get('email')?.hasError('required')">
+              Debe proporcionar una contraseña
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <ion-toolbar class="button-validate">
+          <ion-button>Iniciar sesión</ion-button>
+        </ion-toolbar>
+      </form>
+      
+    </div>
+</ion-content>
