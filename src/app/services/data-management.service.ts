@@ -38,7 +38,11 @@ export class DataManagementService {
       })
       .catch(err => {
         console.dir(err);
-        alert(err.message);
+        if(err.status == 401){
+          alert("Usuario o contraseña incorrecta");
+        } else {
+          alert(err.message);
+        }
       })
   }
 }
