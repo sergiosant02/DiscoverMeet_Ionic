@@ -3,20 +3,22 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import { Observable } from 'rxjs/internal/Observable';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
+import { PersistenceService } from '../services/persistence.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private persistenceService: PersistenceService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token: string | null = localStorage.getItem("Authorization");
-
+    const token: string | null = this.persistenceService.getValue("Authorization");
     if(token){
+      console.log('Hay token:',token);
       req = req.clone({headers: req.headers.set("Authorization",token)})
     } else {
+      console.log('No hay token');
       this.router.navigate(['']);
     }
 

@@ -10,7 +10,7 @@
       alt="Discover meet icon"
     ></ion-img>
   <div class="body">
-      <form [formGroup]="formEdit">
+      <form [formGroup]="formEdit" (ngSubmit)="login()">
         <div>
           <mat-form-field appearance="fill" class="field">
             <mat-label>Email</mat-label>
@@ -30,7 +30,7 @@
           </mat-form-field>
         </div>
         <ion-toolbar class="button-validate">
-          <ion-button>Iniciar sesión</ion-button>
+          <ion-button type="submit" [disabled]="!formEdit.valid">Iniciar sesión</ion-button>
         </ion-toolbar>
       </form>
       
