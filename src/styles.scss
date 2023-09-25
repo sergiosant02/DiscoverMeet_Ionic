@@ -40,6 +40,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --background: #3F2305;
     text-decoration-color: white;
 }
+.nav-bar {
+    
+    --background: #3F2305;
+    opacity: 0.9;
+    //--color: #3F2305;
+    //--border: #3F2305;
+}
+
+.tab-button {
+    --color-focused: white;
+    --color-selected: white;
+    --color: rgb(121, 95, 95);
+}
 
 ion-content {
     --background: #F2EAD3;

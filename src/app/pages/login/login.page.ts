@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataManagementService } from 'src/app/services/data-management.service';
-import { User } from 'src/app/types/user';
+import { User, UserCredentialsLogin } from 'src/app/types/user';
 
 @Component({
   selector: 'app-login',
@@ -26,10 +26,9 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    const user: User = {
+    const user: UserCredentialsLogin = {
       email: this.formEdit.value.email,
       password: this.formEdit.value.password,
-      username: this.formEdit.value.email
     };
 
     console.log('user to login:',user);

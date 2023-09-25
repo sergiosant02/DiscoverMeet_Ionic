@@ -10,7 +10,7 @@ export class WsAstractService {
 
   constructor(private http: HttpClient) { }
 
-  protected makeGetRequest(path:string, paramsRequest:any){
+  protected makeGetRequest(path:string, paramsRequest?:any): Promise<any>{
     paramsRequest = !paramsRequest ? {} : paramsRequest;
     return new Promise((resolve, reject) => {
       this.http.get(path, {params: paramsRequest}).subscribe((data) => {
@@ -26,7 +26,7 @@ export class WsAstractService {
     })
   }
 
-  protected makeDeleteRequest(path:string, paramsRequest:any){
+  protected makeDeleteRequest(path:string, paramsRequest:any): Promise<any>{
     paramsRequest = !paramsRequest ? {} : paramsRequest;
     return new Promise((resolve, reject) => {
       this.http.delete(path, {params: paramsRequest}).subscribe({
@@ -43,9 +43,9 @@ export class WsAstractService {
     })
   }
 
-  protected makePostRequest(path:string, data:any): Promise<any>{
+  protected makePostRequest(path:string, data?:any, params?: any): Promise<any>{
     return new Promise((resolve, reject) => {
-      this.http.post(path, data).subscribe({
+      this.http.post(path, data, {params: params}).subscribe({
         next: (data) => resolve(data),
         error: (err) => reject(err)
       });

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { WsAstractService } from './ws-astract.service';
 import { User } from '../types/user';
+import { Room } from '../types/room';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,29 @@ export class RestService extends WsAstractService {
     super(http);
   }
 
+  // User 
   async login(user: User): Promise<any> {
-    return await this.makePostRequest(`${this.path}/auth/signin`, user);
+    return await this.makePostRequest(`${this.path}/login`, user);
   }
+
+  async signIn(user: User): Promise<any> {
+    return await this.makePostRequest(`${this.path}/resgister`, user);
+  }
+
+
+  // Rooms
+
+  async getJoinedRooms(): Promise<Room[]>{
+    return await this.makeGetRequest(`${this.path}room/joinedRooms`);
+  }
+
+  async getMyRooms(): Promise<Room[]>{
+    return await this.makeGetRequest(`${this.path}room/joinedRooms`);
+  }
+
+  async addToRoom(roomCode: string): Promise<any> {
+    return await this.makePostRequest(`${this.path}/room/addParticipant`, undefined, roomCode);
+  }
+
+
 }
