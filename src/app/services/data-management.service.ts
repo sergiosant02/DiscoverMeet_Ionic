@@ -28,7 +28,7 @@ export class DataManagementService {
   private loadToken(data: any): void{
     if(data.token){
       let decodeToken: any = jwt_decode(data.token);
-      this.persistenceService.setValue("Authorization", data.token);
+      this.persistenceService.setValue("authorization", data.token);
       this.router.navigate(['/data/tabs']);
       this.role.next(decodeToken.role)
       console.log(jwt_decode(data.token));
@@ -46,10 +46,10 @@ export class DataManagementService {
       })
       .catch(err => {
         console.dir(err);
-        if(err.status == 401){
+        if (err.status == 400) {
           alert("Usuario o contraseña incorrecta");
         } else {
-          alert(err.message);
+          alert(err.statusText);
         }
       })
   }
@@ -63,12 +63,23 @@ export class DataManagementService {
       })
       .catch(err => {
         console.dir(err);
-        if (err.status == 401) {
+        if (err.status == 400) {
           alert("Usuario o contraseña incorrecta");
         } else {
-          alert(err.message);
+          alert(err.statusText);
         }
         return [];
       });
+  }
+
+
+  // questionnaires
+
+  async getQuestionnairesOfRoom(roomId: string){
+    return this.rest.getQuestionnairesOfRoom(roomId)
+      .then(data => data)
+      .catch(err => {
+        alert(err.statusMessage);
+      })
   }
 }
