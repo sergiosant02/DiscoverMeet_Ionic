@@ -23,16 +23,19 @@
         <div>
           <mat-form-field appearance="fill" class="field">
             <mat-label>Contraseña</mat-label>
-            <input matInput type="password" formControlName="password" name="password" required>
+            <input matInput type="{{ check ? 'text': 'password'}}" formControlName="password" name="password" required>
             <mat-error *ngIf="formEdit.get('email')?.hasError('required')">
               Debe proporcionar una contraseña
             </mat-error>
           </mat-form-field>
+          
         </div>
+        <mat-slide-toggle [checked]="check" (change)="showPass($event)" class="slider" color="primary">Mostrar contraseña</mat-slide-toggle>
         <ion-toolbar class="button-validate">
           <ion-button type="submit" [disabled]="!formEdit.valid">Iniciar sesión</ion-button>
         </ion-toolbar>
       </form>
+
       
     </div>
 </ion-content>

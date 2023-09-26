@@ -10,7 +10,8 @@ import { User, UserCredentialsLogin } from 'src/app/types/user';
 })
 export class LoginPage implements OnInit {
 
-  formEdit!: FormGroup;
+  formEdit!: FormGroup; 
+  check: boolean = false;
 
   constructor(private dataManagementService: DataManagementService) { }
 
@@ -35,6 +36,10 @@ export class LoginPage implements OnInit {
 
     this.dataManagementService.login(user);
     
+  }
+
+  showPass(value: any) {
+    this.check = value.checked;
   }
 
 
