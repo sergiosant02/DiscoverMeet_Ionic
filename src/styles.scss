@@ -28,6 +28,21 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 
+ion-content {
+    --background: #F2EAD3;
+}
+
+ion-toolbar {
+    --background: transparent;
+}
+
+ion-back-button{
+    --color: white !important;
+  }
+  ion-card-title {
+    font-weight: bold;
+  }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -40,6 +55,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --background: #3F2305;
     text-decoration-color: white;
 }
+
 .nav-bar {
     
     --background: #3F2305;
@@ -54,13 +70,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --color: rgb(121, 95, 95);
 }
 
-ion-content {
-    --background: #F2EAD3;
-}
 
-ion-toolbar {
-    --background: transparent;
-}
 
 .list {
     background-color: transparent;
@@ -71,6 +81,7 @@ ion-toolbar {
     text-align: center;
     font-weight: bold;
     font-size: larger;
+    color: black;
 }
 
 .posterImg {
@@ -78,4 +89,29 @@ ion-toolbar {
     border-radius: 50%;
     
 }
+
+.row {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.exppanded-width {
+    width: 100%;
+}
+
+.icon {
+    width: 30px;
+    padding: 5px;
+    font-size: 30px;
+}
+
+.creation-info {
+    color: #bababa;
+}
+
+
 

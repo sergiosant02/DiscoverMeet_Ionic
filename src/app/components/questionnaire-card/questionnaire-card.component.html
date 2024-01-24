@@ -1,0 +1,24 @@
+<ion-card class="personal-card" [color]="'primary'" (click)="goQuestionList()">
+  <ion-row class="ion-align-items-center">
+    <ion-col class="exppanded-width">
+
+      <ion-card-header>
+        <ion-card-title>{{questionnaire.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{questionnaire.description}}</p>
+        <p class="creation-info">Cuestionario creado: {{questionnaire.createdAt | date:'medium'}}</p>
+        <div *ngIf="questionnaire.createdAt != questionnaire.updatedAt">
+    
+          <p class="creation-info">Cuestionario actualizado: {{questionnaire.updatedAt | date}}</p>
+        </div>
+      </ion-card-content>
+
+    </ion-col>
+  
+      <ion-icon name="chevron-forward-outline" class="icon"></ion-icon>
+
+  </ion-row>
+  
+  
+</ion-card>

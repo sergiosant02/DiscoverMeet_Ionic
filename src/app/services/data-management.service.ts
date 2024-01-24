@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { PersistenceService } from './persistence.service';
 import jwt_decode from "jwt-decode";
 import { Room } from '../types/room';
+import { Questionnaire } from '../types/questionnaire';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class DataManagementService {
     if(data.token){
       let decodeToken: any = jwt_decode(data.token);
       this.persistenceService.setValue("authorization", data.token);
-      this.router.navigate(['/data/tabs']);
+      this.router.navigate(['/data/tabs/tab1']);
       this.role.next(decodeToken.role)
       console.log(jwt_decode(data.token));
     }
@@ -75,11 +76,12 @@ export class DataManagementService {
 
   // questionnaires
 
-  async getQuestionnairesOfRoom(roomId: string){
+  async getQuestionnairesOfRoom(roomId: string): Promise<Questionnaire[]> {
     return this.rest.getQuestionnairesOfRoom(roomId)
       .then(data => data)
       .catch(err => {
         alert(err.statusMessage);
+        return []
       })
   }
 }

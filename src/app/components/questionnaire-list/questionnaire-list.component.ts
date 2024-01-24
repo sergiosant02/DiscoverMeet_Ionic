@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DataManagementService } from 'src/app/services/data-management.service';
+import { PersistenceService } from 'src/app/services/persistence.service';
 import { Questionnaire } from 'src/app/types/questionnaire';
 
 @Component({
@@ -9,13 +11,15 @@ import { Questionnaire } from 'src/app/types/questionnaire';
 })
 export class QuestionnaireListComponent  implements OnInit {
 
-  QuestionnaireList: Questionnaire[] = []
-  constructor(private dataManagementService: DataManagementService) { }
+  questionnaireList: Questionnaire[] = []
+  constructor(private dataManagementService: DataManagementService, private route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getData();
+  }
 
   async getData() {
-
+    this.questionnaireList = await this.dataManagementService.getQuestionnairesOfRoom(this.route.snapshot.params["roomId"]);
   }
 
 }

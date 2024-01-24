@@ -10,8 +10,8 @@ import { Questionnaire } from '../types/questionnaire';
 })
 export class RestService extends WsAstractService {
 
-  // serverUrl = 'http://185.251.214.80:8080';
-  serverUrl = 'http://localhost:8080';
+  //serverUrl = 'http://185.251.214.80:8080';
+  serverUrl = 'http://192.168.1.115:8080';
   apiPath = '/api';
   path = this.serverUrl + this.apiPath;
 

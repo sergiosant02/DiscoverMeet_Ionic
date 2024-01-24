@@ -32,7 +32,7 @@
         </div>
         <mat-slide-toggle [checked]="check" (change)="showPass($event)" class="slider" color="primary">Mostrar contraseña</mat-slide-toggle>
         <ion-toolbar class="button-validate">
-          <ion-button type="submit" [disabled]="!formEdit.valid">Iniciar sesión</ion-button>
+          <ion-button type="submit" [disabled]="!formEdit.valid" class="button-validate" [color]="'primary'">Iniciar sesión</ion-button>
         </ion-toolbar>
       </form>
 
